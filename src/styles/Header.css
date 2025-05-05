@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap');
+.header_wrapper {
+  display: flex;
+  background: var(--color-heading);
+  width: 90%;
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+}
+.logo_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.6px;
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  /* background: linear-gradient(to right, #f5f7fa, #e4e9f0);
+  padding: 0.5rem 1rem; */
+  border-radius: 0.75rem;
+  color: #1a1a1a;
+  text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.logo .green {
+  color: #3ac47d; /* soft green */
+}
+
+.logo .red {
+  color: #f45b69; /* muted coral red */
+}
+.nav_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.login_btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+.login_btns .blue {
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.login_btns .clear {
+  background: white;
+  color: #121212;
+  font-weight: 700;
+  transition: scale 250ms ease-in-out;
+}
+.login_btns .clear:hover {
+  scale: 1.1;
+}
