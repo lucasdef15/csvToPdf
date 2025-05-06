@@ -2,10 +2,15 @@
 .header_wrapper {
   display: flex;
   background: var(--color-heading);
-  width: 90%;
+  width: 80%;
+  height: 3rem;
   border-radius: var(--radius-md);
-  padding: 0.8rem;
-  margin-top: 0.5rem;
+  padding: 1rem;
+  margin-inline: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  position: sticky;
+  top: 20px;
 }
 .logo_wrapper {
   display: flex;
@@ -23,7 +28,7 @@
   gap: 0.25rem;
   align-items: center;
   /* background: linear-gradient(to right, #f5f7fa, #e4e9f0);
-  padding: 0.5rem 1rem; */
+  padding: 0.5rem; */
   border-radius: 0.75rem;
   color: #1a1a1a;
   text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.05);
@@ -49,9 +54,14 @@
   gap: 0.8rem;
 }
 .login_btns .blue {
+  background: #1a1a1a;
   font-weight: 700;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.login_btns .blue:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 .login_btns .clear {
   background: white;

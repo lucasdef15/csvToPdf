@@ -5,10 +5,12 @@ import Header from './components/Header';
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-      <Outlet />
-    </div>
+      <main className='main_container'>
+        <Outlet />
+      </main>
+    </>
   );
 };
 

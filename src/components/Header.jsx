@@ -4,9 +4,9 @@ import '../styles/Header.css';
 
 const Header = () => {
   return (
-    <div className=' container header_wrapper box-shadow'>
+    <header className='header_wrapper box-shadow'>
       <Navigation />
-    </div>
+    </header>
   );
 };
 
