@@ -1,4 +1,3 @@
-// useAxiosPrivate.js
 import axios from '../api/axios';
 import useAuth from './useAuth';
 import { useEffect } from 'react';

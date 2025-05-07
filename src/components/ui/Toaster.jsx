@@ -5,7 +5,7 @@ const Toaster = () => {
   const { toasts, dismissToast } = useToast();
 
   // Debug: Log toasts to confirm rendering
-  console.log('Toasts:', toasts);
+  // console.log('Toasts:', toasts);
 
   return (
     <Toast.Provider swipeDirection='right'>

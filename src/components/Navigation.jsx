@@ -32,20 +32,17 @@ const Navigation = () => {
   };
 
   return (
-    <nav className='w-full bg-[var(--color-heading)] rounded-[var(--radius-md)] p-4 sticky top-5 z-50 backdrop-blur-[10px]'>
+    <nav className='w-full rounded-[var(--radius-md)] sticky  z-50 backdrop-blur-[10px]'>
       <div className='max-w-7xl mx-auto flex items-center justify-between'>
-        <section className='flex items-center gap-4'>
-          <span className='font-[Outfit] font-bold text-[1.3rem] tracking-[0.6px] inline-flex items-center gap-1 text-[#1a1a1a]'>
+        <section className='flex items-center justify-center'>
+          <button
+            onClick={() => navigate('/')}
+            className='font-[Outfit] font-bold text-[1.3rem] tracking-[0.6px] inline-flex items-center gap-1 text-[#1a1a1a] cursor-pointer focus:outline-none'
+          >
             <span className='text-[#3ac47d]'>CSV</span>
             <span className='text-sm'>to</span>
             <span className='text-[#f45b69]'>PDF</span>
-          </span>
-          <Link
-            to='/'
-            className='text-s font-medium text-[#1a1a1a] hover:underline hidden sm:inline'
-          >
-            Home
-          </Link>
+          </button>
         </section>
 
         {/* Botão Hamburguer (visível apenas em telas pequenas) */}
@@ -62,13 +59,13 @@ const Navigation = () => {
             <>
               <button
                 onClick={handleLogin}
-                className='bg-white text-[#121212] font-bold px-4 py-2 rounded hover:scale-110 transition'
+                className='bg-white text-[#121212] font-bold cursor-pointer px-4 py-2 rounded hover:scale-110 transition'
               >
                 Login
               </button>
               <button
                 onClick={handleRegister}
-                className='bg-[#1a1a1a] text-white font-bold px-4 py-2 rounded shadow-md hover:scale-105 hover:shadow-lg transition'
+                className='bg-[#1a1a1a] text-white font-bold cursor-pointer px-4 py-2 rounded shadow-md hover:scale-105 hover:shadow-lg transition'
               >
                 Sign up
               </button>
@@ -80,7 +77,7 @@ const Navigation = () => {
               </span>
               <button
                 onClick={handleLogout}
-                className='bg-red-500 text-white font-semibold px-4 py-2 rounded hover:bg-red-600 transition'
+                className='bg-red-500 text-white cursor-pointer font-semibold px-4 py-2 rounded hover:bg-red-600 transition'
               >
                 Logout
               </button>

@@ -9,12 +9,11 @@ const DropZone = ({ onFileAccepted }) => {
   const onDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
-      console.log('Dropped file:', file);
       if (file && file.type === 'text/csv') {
         setSelectedFile(file);
         onFileAccepted(file);
       } else {
-        toast.error('Only CSV files are allowed.');
+        toast.error('Apenas arquivos CSV são permitidos.');
         setSelectedFile(null);
       }
     },

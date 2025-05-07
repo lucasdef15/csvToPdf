@@ -106,7 +106,7 @@ const Login = () => {
                 htmlFor='username'
                 className='block text-gray-700 font-medium mb-1'
               >
-                Username:
+                Nome de Usuário:
               </label>
               <input
                 type='text'
@@ -125,7 +125,7 @@ const Login = () => {
                 htmlFor='password'
                 className='block text-gray-700 font-medium mb-1'
               >
-                Password:
+                Senha:
               </label>
               <input
                 type='password'
@@ -138,7 +138,7 @@ const Login = () => {
             </div>
 
             <button
-              className='w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300'
+              className='w-full bg-blue-600 text-white cursor-pointer py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300'
               style={{ marginTop: '.8rem' }}
             >
               Sign In
@@ -146,7 +146,7 @@ const Login = () => {
           </form>
 
           <p className='text-sm text-gray-700 mt-6 text-center'>
-            Need an Account?{' '}
+            Criar Uma Conta?{' '}
             <Link
               to='/register'
               className='text-blue-600 font-semibold hover:underline'

@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import DropZone from '../components/DropZone';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import useAuth from '../hooks/useAuth';
 import { FaDownload, FaTimes } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [uploading, setUploading] = useState(false);
   const [pdfs, setPdfs] = useState([]); // Store PDFs with url and filename
-  const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
 
   const handleFileAccepted = async (file) => {
@@ -32,7 +32,6 @@ const Home = () => {
       const { message, pdfUrl } = res.data;
       const filename = pdfUrl.split('/').pop();
 
-      // Add PDF to state
       setPdfs((prevPdfs) => [
         ...prevPdfs,
         { url: `http://localhost:5000${pdfUrl}`, filename },
@@ -43,14 +42,21 @@ const Home = () => {
       });
     } catch (error) {
       console.error('Upload error:', error);
+      if (error.response?.status === 401) {
+        toast.error('Você precisa estar logado para enviar arquivos.', {
+          toastId: 'unauthorized-upload',
+        });
+        navigate('/login'); // REDIRECIONA PARA LOGIN
+        return;
+      }
+
       let errorMessage = 'Houve um erro ao tentar fazer o upload.';
       if (error.response?.data?.message) {
         errorMessage = error.response.data.message;
-      } else if (error.response?.status === 401) {
-        errorMessage = 'Sessão expirada. Faça login novamente.';
       } else if (error.response?.status === 403) {
         errorMessage = 'Acesso negado. Verifique suas credenciais.';
       }
+
       toast.error(errorMessage, { toastId: 'error-file' });
     } finally {
       setUploading(false);

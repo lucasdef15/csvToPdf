@@ -10,13 +10,13 @@ const useLogout = () => {
 
   const logout = async () => {
     try {
-      await axiosPrivate.post('/auth/logout'); // limpa cookie no backend
+      await axiosPrivate.post('/auth/logout');
     } catch (err) {
       console.error('Erro ao fazer logout:', err);
     } finally {
       setAuth({ accessToken: '', user: null });
       localStorage.removeItem('auth');
-      navigate('/login'); // ou a rota que quiser
+      navigate('/login');
     }
   };
 
