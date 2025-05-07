@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from '../context/AuthProvider';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import axios from '../api/axios';
@@ -50,17 +50,21 @@ const Login = () => {
       });
     } catch (err) {
       if (!err?.response) {
-        setErrMsg('No Server Response');
-        toast.error(errMsg);
+        setErrMsg('Sem resposta do servidor');
+        toast.error(errMsg || 'Sem resposta do servidor', {
+          toastId: 'error-msg4',
+        });
       } else if (err.response?.status === 400) {
-        setErrMsg('Missing Username or Password');
-        toast.error(errMsg);
+        setErrMsg('Usuário ou senha ausentes');
+        toast.error(errMsg || 'Usuário ou senha ausentes', {
+          toastId: 'error-msg3',
+        });
       } else if (err.response?.status === 401) {
-        setErrMsg('Unauthorized');
-        toast.error(errMsg);
+        setErrMsg('Não autorizado');
+        toast.error(errMsg || 'Não autorizado', { toastId: 'error-msg2' });
       } else {
-        setErrMsg('Login Failed');
-        toast.error(errMsg);
+        setErrMsg('Falha no login');
+        toast.error(errMsg || 'Falha no login', { toastId: 'error-msg1' });
       }
       errRef.current.focus();
       toast.error(errorMessage, { toastId: 'login-error' });
@@ -88,15 +92,6 @@ const Login = () => {
         </section>
       ) : (
         <section className='w-sm mx-auto mt-7 p-8 bg-white rounded-2xl shadow-2xl animate-fade-in'>
-          <p
-            ref={errRef}
-            className={`${
-              errMsg ? 'text-red-500 bg-red-100 p-3 rounded mb-4' : 'sr-only'
-            }`}
-            aria-live='assertive'
-          >
-            {errMsg}
-          </p>
           <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>
             Sign In
           </h1>

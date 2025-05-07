@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { FaDownload, FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { BsFillFileEarmarkPdfFill } from 'react-icons/bs';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -90,8 +91,12 @@ const Home = () => {
             {pdfs.map((pdf, index) => (
               <li
                 key={index}
-                className='flex items-center justify-between bg-gray-50 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow duration-200'
+                className='flex items-center gap-2 justify-between bg-gray-50 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow duration-200'
               >
+                <BsFillFileEarmarkPdfFill
+                  fontSize={25}
+                  className='text-red-500'
+                />
                 <span className='text-gray-700 truncate flex-1 text-left pr-4'>
                   {pdf.filename}
                 </span>

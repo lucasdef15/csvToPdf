@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { FaCheck, FaTimes, FaInfoCircle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
 
@@ -76,11 +77,21 @@ const Register = () => {
       setMatchPwd('');
     } catch (err) {
       if (!err?.response) {
-        setErrMsg('No Server Response');
+        setErrMsg('Sem resposta do servidor');
+        setErrMsg('Sem resposta do servidor');
+        toast.error(errMsg || 'Sem resposta do servidor', {
+          toastId: 'error-msg5',
+        });
       } else if (err.response?.status === 409) {
-        setErrMsg('Username Taken');
+        setErrMsg('Nome de usuário já está em uso');
+        toast.error(errMsg || 'Nome de usuário já está em uso', {
+          toastId: 'error-msg6',
+        });
       } else {
-        setErrMsg('Registration Failed');
+        setErrMsg('Falha no cadastro');
+        toast.error(errMsg || 'Falha no cadastro', {
+          toastId: 'error-msg7',
+        });
       }
       errRef.current.focus();
     }
@@ -89,7 +100,7 @@ const Register = () => {
   return (
     <>
       {success ? (
-        <section className='max-w-md mx-auto mt-16 p-8 bg-white rounded-2xl shadow-lg text-center animate-fade-in'>
+        <section className='max-w-md mx-auto mt-6 p-8 bg-white rounded-2xl shadow-lg text-center animate-fade-in'>
           <h1 className='text-3xl font-bold text-green-600 mb-4'>
             Conta Criada!
           </h1>
@@ -107,16 +118,7 @@ const Register = () => {
           </p>
         </section>
       ) : (
-        <section className='w-sm mx-auto mt-7 p-8 bg-white rounded-2xl shadow-2xl animate-fade-in'>
-          <p
-            ref={errRef}
-            className={`${
-              errMsg ? 'text-red-500 bg-red-100 p-3 rounded mb-4' : 'sr-only'
-            }`}
-            aria-live='assertive'
-          >
-            {errMsg}
-          </p>
+        <section className='w-sm mx-auto mt-0 p-8 bg-white rounded-2xl shadow-2xl animate-fade-in'>
           <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>
             Cadastrar
           </h1>
@@ -250,7 +252,7 @@ const Register = () => {
             {/* Submit */}
             <button
               disabled={!validName || !validPwd || !validMatch}
-              className={`w-full py-2 rounded-lg font-semibold transition duration-300 ${
+              className={`w-full py-2 rounded-lg font-semibold cursor-pointer transition duration-300 ${
                 !validName || !validPwd || !validMatch
                   ? 'bg-gray-400 cursor-not-allowed text-white'
                   : 'bg-blue-600 hover:bg-blue-700 text-white'
