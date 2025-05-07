@@ -1,10 +1,9 @@
 import React from 'react';
 import Navigation from './Navigation';
-import '../styles/Header.css';
 
 const Header = () => {
   return (
-    <header className='header_wrapper box-shadow'>
+    <header className='flex w-[80%]  bg-white rounded-3xl p-1 mx-auto sticky top-5 backdrop-blur-[10px] shadow-lg'>
       <Navigation />
     </header>
   );

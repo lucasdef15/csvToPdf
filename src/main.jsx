@@ -4,8 +4,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Home from './pages/Home';
 import './styles/index.css';
-// import About from './pages/About';
-// import NotFound from './pages/NotFound';
+import Register from './components/Register';
+import Login from './components/Login';
+import { AuthProvider } from './context/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -16,18 +17,20 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
       },
-      // {
-      //   path: "/about",
-      //   element: <About />,
-      // },
-      // {
-      //   path: "*",  // Catch-all route for 404
-      //   element: <NotFound />,
-      // }
+      {
+        path: '/register',
+        element: <Register />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
 );

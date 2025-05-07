@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { toast } from 'react-toastify';
+import { BsFillFileEarmarkSpreadsheetFill } from 'react-icons/bs';
 
 const DropZone = ({ onFileAccepted }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -29,50 +30,31 @@ const DropZone = ({ onFileAccepted }) => {
   return (
     <div
       {...getRootProps()}
-      style={{
-        border: isDragActive ? '2px dashed #00A63E' : '2px dashed #999',
-        padding: '5rem',
-        marginBlock: '.8rem',
-        borderRadius: '12px',
-        textAlign: 'center',
-        backgroundColor: isDragActive ? '#f0f8ff' : '#fafafa',
-        transition: 'background-color 0.3s',
-        cursor: 'pointer',
-        color: isDragActive ? '#00A63E' : '',
-      }}
+      className={`
+        flex flex-col items-center justify-center text-center
+        border-2 border-dashed rounded-xl cursor-pointer transition-colors duration-300
+        px-8 py-10 my-4
+        ${
+          isDragActive
+            ? 'border-green-600 bg-blue-50 text-green-600'
+            : 'border-gray-400 bg-gray-50 text-gray-600'
+        }
+      `}
     >
       <input {...getInputProps()} />
       {selectedFile ? (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem',
-          }}
-        >
-          <svg
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='#00A63E'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          >
-            <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-            <polyline points='14 2 14 8 20 8' />
-            <line x1='16' y1='13' x2='8' y2='13' />
-            <line x1='16' y1='17' x2='8' y2='17' />
-            <polyline points='10 9 9 9 8 9' />
-          </svg>
-          <p>File loaded: {selectedFile.name}</p>
+        <div className='flex flex-col items-center gap-2'>
+          <BsFillFileEarmarkSpreadsheetFill className='text-green-600 text-4xl' />
+          <p className='text-sm text-green-700'>
+            Arquivo carregado: {selectedFile.name}
+          </p>
         </div>
       ) : isDragActive ? (
-        <p>Drop the CSV here...</p>
+        <p className='text-base font-medium'>Solte o arquivo CSV aqui...</p>
       ) : (
-        <p>Drag & drop a CSV file here, or click to select</p>
+        <p className='text-base font-medium'>
+          Arraste e solte um arquivo CSV aqui, ou clique para selecionar
+        </p>
       )}
     </div>
   );
